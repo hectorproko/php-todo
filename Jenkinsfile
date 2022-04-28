@@ -65,6 +65,24 @@ pipeline {
       }
     }
 
+    stage ('Deploy Artifact') {
+        steps {
+            cript {
+                def server = Artifactory.server 'artifactory-server'
+                def uploadSpec = """{
+                    "files": [{
+                     "pattern": "php-todo.zip",
+                     "target": "php-todo"
+                    }]
+                }"""
+            server.upload(uploadSpec) 
+            }
+        }
+    }
+
+
+
+
     /*stage ('Upload Artifact to Artifactory') {
       steps {
         script { 
