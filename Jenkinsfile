@@ -13,7 +13,7 @@ pipeline {
 
     stage('Checkout SCM') {
       steps {
-            git branch: 'main', url: 'https://github.com/hectorproko/php-todo.git'
+            git branch: 'main', url: 'https://github.com/Taiwolawal/php-todo.git'
       }
     }
 
@@ -80,8 +80,24 @@ pipeline {
         }
     }
 
+    /*stage ('Upload Artifact to Artifactory') {
+      steps {
+        script { 
+          def server = Artifactory.server 'artifactory-server'                 
+          def uploadSpec = """{
+                    "files": [
+                      {
+                       "pattern": "php-todo.zip",
+                       "target": "PBL/php-todo",
+                       "props": "type=zip;status=ready"
+                       }
+                    ]
+                 }""" 
 
-
+          server.upload spec: uploadSpec
+        }
+      }
+    }*/
 
     /*stage ('Upload Artifact to Artifactory') {
       steps {
