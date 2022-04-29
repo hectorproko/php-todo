@@ -63,7 +63,7 @@ pipeline {
       }
     }
 
-    /*stage ('Deploy Artifact') {
+    stage ('Deploy Artifact') {
         steps {
             cript {
                 def server = Artifactory.server 'artifactory-server'
@@ -76,7 +76,7 @@ pipeline {
             server.upload(uploadSpec) 
             }
         }
-    }*/
+    }
   }
 }
 
