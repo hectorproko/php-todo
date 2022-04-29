@@ -84,7 +84,7 @@ pipeline {
           }
 
     }
-    stage ('Deploy to Dev Environment') {
+    stage ('Deploy to uat Environment') {
         steps {
             build job: 'ansible-project/main', parameters: [[$class: 'StringParameterValue', name: 'env', value: 'uat']], propagate: false, wait: true
         }
