@@ -17,7 +17,7 @@ pipeline {
       }
     }
 
-    stage('Prepare Dependencies') {
+    /*stage('Prepare Dependencies') {
       steps {
              sh 'mv .env.sample .env'
              sh 'composer install'
@@ -27,7 +27,7 @@ pipeline {
       }
     }
 
-    /*stage('Execute Unit Tests') {
+    stage('Execute Unit Tests') {
       steps {
              sh './vendor/bin/phpunit'
       }
