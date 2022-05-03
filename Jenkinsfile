@@ -27,7 +27,7 @@ pipeline {
       }
     }
 
-    stage('Execute Unit Tests') {
+    /*stage('Execute Unit Tests') {
       steps {
              sh './vendor/bin/phpunit'
       }
@@ -71,7 +71,7 @@ pipeline {
       steps {
           sh 'zip -qr php-todo.zip ${WORKSPACE}/*'
       }
-    }
+    }*/
 
 
     stage ('Upload Artifact to Artifactory') {
