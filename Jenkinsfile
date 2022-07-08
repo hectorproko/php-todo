@@ -32,8 +32,8 @@ pipeline {
       
     stage('Push Image') {
       steps {
-	echo ${env.username}
-	echo ${env.password}
+	sh "echo ${env.username}"
+	sh "echo ${env.password}"
       }
     }
   }
