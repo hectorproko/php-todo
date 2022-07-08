@@ -30,9 +30,10 @@ pipeline {
       }
     }
       
-    stage('Code Analysis') {
+    stage('Push Image') {
       steps {
-        echo "Code Analysis"
+	echo ${env.username}
+	echo ${env.password}
       }
     }
   }
