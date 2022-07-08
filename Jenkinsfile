@@ -25,7 +25,8 @@ pipeline {
       
     stage('Start Container') {
       steps {
-		sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+	sh "docker stop php-todo"
+	sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
       }
     }
       
