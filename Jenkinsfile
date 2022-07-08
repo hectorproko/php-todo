@@ -13,15 +13,15 @@ pipeline {
     
     stage('Checkout SCM') {
       steps {
-        git branch: 'docker_job', url: 'https://github.com/hectorproko/php-todo.git'
+        git branch: '${env.BRANCH_NAME}', url: 'https://github.com/hectorproko/php-todo.git'
       }
     }
 
     stage('Docker Image Build') {
       steps {
        // sh "docker build -t hectorproko/php-todo:${BRANCH_NAME}-${BUILD_NUMBER} ."
-        //sh "docker build -t hectorproko/php-todo:docker_job-${BUILD_NUMBER} ."
-        echo "The branch ${env.BRANCH_NAME}"
+        sh "docker build -t hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+        //echo "The branch ${env.BRANCH_NAME}"
       }
     }
 
