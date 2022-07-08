@@ -34,6 +34,7 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'DockerHubLogIn', passwordVariable: 'password', usernameVariable: 'username')]) {
           sh "docker login -u ${username} -p ${password}"
+	  sh "docker push hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         }
       }
     }
