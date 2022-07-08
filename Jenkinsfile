@@ -19,7 +19,8 @@ pipeline {
 
     stage('Docker Image Build') {
       steps {
-        sh "docker build -t hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+        // sh "docker build -t hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
+        sh "docker build -t hectorproko/php-todo:TEST-${env.BUILD_NUMBER} ."
       }
     }
 
