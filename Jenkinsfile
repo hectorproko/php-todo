@@ -2,7 +2,8 @@ pipeline {
     agent any
 
 parameters {
-      string(name: 'inventory', defaultValue: 'dev',  description: 'This is the inventory file for the environment to deploy configuration')
+      string(name: 'Docker Username', defaultValue: 'hectorproko',  description: 'This is the inventory file for the environment to deploy configuration')
+      string(name: 'Password', defaultValue: 'Capi',  description: 'This is the inventory file for the environment to deploy configuration')
     }
 
 	
