@@ -10,12 +10,12 @@ pipeline {
           }
         }
     }
-
-    stage('Checkout SCM') {
-      steps {
-        git branch: 'main', url: 'https://github.com/hectorproko/php-todo.git'
-      }
-    }
+    // This is already done in the job
+    //stage('Checkout SCM') {
+    //  steps {
+    //    git branch: 'main', url: 'https://github.com/hectorproko/php-todo.git'
+    //  }
+    //}
 
     stage('Docker Image Build') {
       steps {
