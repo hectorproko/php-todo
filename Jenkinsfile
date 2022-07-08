@@ -22,7 +22,13 @@ pipeline {
         sh "docker build -t hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
       }
     }
-
+      
+    stage('Start Container') {
+      steps {
+		sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+      }
+    }
+      
     stage('Code Analysis') {
       steps {
         echo "Code Analysis"
