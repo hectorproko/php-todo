@@ -21,7 +21,7 @@ pipeline {
       steps {
        // sh "docker build -t hectorproko/php-todo:${BRANCH_NAME}-${BUILD_NUMBER} ."
         //sh "docker build -t hectorproko/php-todo:docker_job-${BUILD_NUMBER} ."
-        echo "The branch ${BRANCH_NAME}"
+        echo "The branch ${env.BRANCH_NAME}"
       }
     }
 
