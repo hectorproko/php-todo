@@ -17,7 +17,7 @@ pipeline {
       }
     }
 
-    stage('Execute Unit Tests') {
+    stage('Docker Image Build') {
       steps {
         sh "docker build -t uzukwujp/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
       }
