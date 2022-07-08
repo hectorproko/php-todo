@@ -1,11 +1,5 @@
 pipeline {
     agent any
-
-parameters {
-      string(name: 'Docker Username', defaultValue: 'hectorproko',  description: 'This is the inventory file for the environment to deploy configuration')
-      string(name: 'Password', defaultValue: 'Capi',  description: 'This is the inventory file for the environment to deploy configuration')
-    }
-
 	
   stages {
 
@@ -38,8 +32,9 @@ parameters {
       
     stage('Push Image') {
       steps {
-	sh "echo ${env.username}"
-	sh "echo ${env.password}"
+        withCredentials([usernamePassword(credentialsId: 'DockerHubLogIn', passwordVariable: 'password', usernameVariable: 'username')]) {
+          sh "docker login -u ${username} -p ${password}"
+        }
       }
     }
   }
