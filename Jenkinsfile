@@ -13,13 +13,13 @@ pipeline {
 
     stage('Checkout SCM') {
       steps {
-            git branch: 'main', url: 'https://github.com/hectorproko/php-todo.git'
+        git branch: 'main', url: 'https://github.com/hectorproko/php-todo.git'
       }
     }
 
     stage('Execute Unit Tests') {
       steps {
-        echo "Execute Unit Tests"
+        sh "docker build -t uzukwujp/php-todo:${env.BRANCH_NAME}-${env.BUILD_NUMBER} ."
       }
     }
 
