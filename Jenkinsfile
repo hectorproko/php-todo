@@ -25,8 +25,8 @@ pipeline {
       
     stage('Start Container') {
       steps {
-	sh "docker stop php-todo && docker rm php-todo" //so we can run job multiple times if we want
-	sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+        sh "docker stop php-todo && docker rm php-todo" //so we can run job multiple times if we want
+	      sh "docker run -d --name php-todo --network tooling_app_network -p 8085:8000 hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
       }
     }
       
@@ -34,15 +34,16 @@ pipeline {
       steps {
         withCredentials([usernamePassword(credentialsId: 'DockerHubLogIn', passwordVariable: 'password', usernameVariable: 'username')]) {
           sh "docker login -u ${username} -p ${password}"
-	  sh "docker push hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
-        }
-      }
-	    
-    stage('Push Image') {
-      steps {
-	  sh "docker rmi hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+	        sh "docker push hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         }
       }
     }
+	    
+    stage('Push Image') {
+      steps {
+	      sh "docker rmi hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+      }
+    }
+    
   }
 }
