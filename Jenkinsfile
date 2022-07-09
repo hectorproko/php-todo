@@ -37,6 +37,12 @@ pipeline {
 	  sh "docker push hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
         }
       }
+	    
+    stage('Push Image') {
+      steps {
+	  sh "docker rmi hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+        }
+      }
     }
   }
 }
