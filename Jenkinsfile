@@ -41,9 +41,12 @@ pipeline {
 	    
     stage('Delete Image') {
       steps {
-	      sh "docker rmi hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}"
+	      sh 'docker rmi $(docker images --filter=reference="hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}" -q)'
       }
     }
     
   }
 }
+
+
+//$(docker images --filter=reference="hectorproko/project20:php-todo-${env.BRANCH_NAME}-${env.BUILD_NUMBER}" -q)
